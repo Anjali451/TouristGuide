@@ -1,0 +1,9 @@
+.nav{
+    height: 3rem;
+    align-items: center;
+    justify-content: center;
+    background-color: deepskyblue;
+    color: whitesmoke;
+    font-weight: 600;
+    touch-action: auto;
+}
