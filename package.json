@@ -24,6 +24,7 @@
     "@syncfusion/ej2-angular-base": "^26.2.5",
     "@syncfusion/ej2-angular-buttons": "^26.2.8",
     "@syncfusion/ej2-angular-navigations": "^26.2.8",
+    "@types/google.maps": "^3.55.12",
     "bootstrap": "^5.3.3",
     "igniteui-angular": "^18.0.6",
     "primeng": "^17.18.5",

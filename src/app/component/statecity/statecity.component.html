@@ -1,0 +1,19 @@
+<div *ngIf="data.length > 0; else noData">
+  <div *ngFor="let item of data" class="card">
+    <h2>{{ item.Name }}</h2>
+    <p><strong>State:</strong> {{ item.State }}</p>
+    <p><strong>City:</strong> {{ item.City }}</p>
+    <p><strong>Classification:</strong> {{ item.Type }}</p>
+    <p><strong>Establishment Year:</strong> {{ item['Establishment Year'] }}</p>
+    <p><strong>Time Needed to Visit:</strong> {{ item['time needed to visit in hrs'] }} hrs</p>
+    <p><strong>Google Review Rating:</strong> {{ item['Google review rating'] }}</p>
+    <p><strong>Entrance Fee:</strong> INR {{ item['Entrance Fee in INR'] }}</p>
+    <p><strong>Airport within 50km Radius:</strong> {{ item['Airport with 50km Radius'] }}</p>
+    <p><strong>Day Closed:</strong> {{ item['Weekly Off'] }}</p>
+    <p><strong>Importance:</strong> {{ item.Significance }}</p>
+    <p><strong>Best Time to Visit:</strong> {{ item['Best Time to visit'] }}</p>
+  </div>
+</div>
+<ng-template #noData>
+  <p>No data available for the selected state and city.</p>
+</ng-template>
