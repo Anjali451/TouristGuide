@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const fs = require('fs');
-const csv = require('csv-parser');
+const path = require('path');
 
 const app = express();
 const port = 3000;
@@ -9,20 +9,25 @@ const port = 3000;
 app.use(cors());
 app.use(express.json());
 
-app.get('/api/locations', (req, res) => {
-  const results = [];
+app.use(express.static(path.join(__dirname, 'public')));
 
-  fs.createReadStream('archive/data.csv')
-    .pipe(csv())
-    .on('data', (data) => results.push(data))
-    .on('end', () => {
-      res.json(results); // Send the data as a JSON response
-    })
-    .on('error', (error) => {
-      res.status(500).send('Error reading CSV file');
+// Serve the JSON data
+app.get('/data', (req, res) => {
+    res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+    res.setHeader('Pragma', 'no-cache');
+    res.setHeader('Expires', '0');
+
+    // Read the data from data.json file
+    fs.readFile(path.join(__dirname, 'data.json'), 'utf8', (err, data) => {
+        if (err) {
+            res.status(500).send('Error reading JSON file');
+            return;
+        }
+        res.json(JSON.parse(data)); // Send the data as a JSON response
     });
 });
 
 app.listen(port, () => {
-  console.log(`Server running on http://localhost:${port}`);
+    console.log(`Server running on http://localhost:${port}`);
 });
+

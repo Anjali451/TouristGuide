@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { DataService } from '../../service/data.service';
+import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
-import { map, Observable } from 'rxjs';
+import {MatCardModule} from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-statecity',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, MatCardModule, MatButtonModule],
   templateUrl: './statecity.component.html',
-  styleUrl: './statecity.component.css'
+  styleUrls: ['./statecity.component.css']
 })
-export class StatecityComponent implements OnInit{
+export class StatecityComponent implements OnInit {
   
   state: string | null = null;
   city: string | null = null;
@@ -30,12 +30,30 @@ export class StatecityComponent implements OnInit{
   }
 
   fetchData() {
-    this.http.get<any[]>('http://localhost:3000/api/locations').subscribe(response => {
-      // Filter data based on state and city
-      this.data = response.filter(item => 
-        (!this.state || item.State === this.state) &&
-        (!this.city || item.City === this.city)
-      );
+    this.http.get<any[]>('http://localhost:3000/data').subscribe({
+      next: (response) => {
+
+        console.log('Raw Response:', response); 
+        // log the entire response
+        console.log('Sample Data:', response[0]); // Log the first item to inspect its structure
+
+        // Continue with the filtering after ensuring the data is correct
+         this.data = response.filter(item => {
+  const matchesState = !this.state || item.State?.trim().toLowerCase() === this.state.trim().toLowerCase();
+  const matchesCity = !this.city || item.City?.trim().toLowerCase() === this.city.trim().toLowerCase();
+  
+  console.log(`State: ${item.State}, City: ${item.City}, Matches State: ${matchesState}, Matches City: ${matchesCity}`);
+  
+  return matchesState && matchesCity;
+});
+
+        console.log('Filtered Data:', this.data); // log filtered data
+      },
+      error: (error) => {
+        console.error('Error fetching data:', error);
+      }
     });
   }
+  
+
 }

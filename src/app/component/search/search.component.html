@@ -1,12 +1,10 @@
-<form (ngSubmit)="search()">
-    <div>
-      <label for="state">State:</label>
-      <input type="text" id="state" [(ngModel)]="State" name="state">
-    </div>
-    <div>
-      <label for="city">City:</label>
-      <input type="text" id="city" [(ngModel)]="City" name="city">
-    </div>
-    <button type="submit">Search</button>
+<mat-card class="example-card" appearance="outlined" style="text-align: center; color:whitesmoke"> 
+  <mat-card-content>
+    <h5>Find Your Next Destination</h5>
+  <form (ngSubmit)="search()">
+    <input placeholder="State" class="form-control" type="text" id="state" [(ngModel)]="State" name="state" style="margin-bottom: 1rem; background: transparent;">
+    <input placeholder="City" class="form-control" type="text" id="city" [(ngModel)]="City" name="city" style="margin-bottom: 1rem; background: transparent;">
+    <button type="submit" class="btn btn-success">Search</button>
   </form>
-  
+  </mat-card-content>
+</mat-card>

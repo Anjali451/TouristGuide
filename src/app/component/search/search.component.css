@@ -1,0 +1,19 @@
+mat-card{
+    margin: auto;
+    margin-top: 2rem;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    background: transparent;
+    border: none;
+}
+
+.example-card {
+    max-width: 700px;
+  }
+
+h5{
+    font-weight: 600;
+}
+
+::placeholder{
+    color: whitesmoke;
+}
