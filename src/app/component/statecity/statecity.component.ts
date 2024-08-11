@@ -5,11 +5,13 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import {MatCardModule} from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { NavbarComponent } from '../navbar/navbar.component';
+import { BookComponent } from '../book/book.component';
 
 @Component({
   selector: 'app-statecity',
   standalone: true,
-  imports: [FormsModule, CommonModule, MatCardModule, MatButtonModule],
+  imports: [FormsModule, CommonModule, MatCardModule, MatButtonModule, NavbarComponent, BookComponent],
   templateUrl: './statecity.component.html',
   styleUrls: ['./statecity.component.css']
 })

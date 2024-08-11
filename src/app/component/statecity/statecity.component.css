@@ -10,6 +10,11 @@
   padding: 20px;
 }
 
+
+#itemImg:hover{
+  transform: scale(1.1);
+  border-radius: 5px;
+}
 .example-card {
 
   flex: 1 1 calc(33.33% - 40px); /* 3 cards per row with space between */

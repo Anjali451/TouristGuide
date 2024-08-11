@@ -1,22 +1,28 @@
 <div class="row">
+  <app-navbar></app-navbar>
+  <header>
+    <h5 *ngIf="city == '';" style="color:whitesmoke; text-align: center; font-weight: 500; margin-top: 2rem; margin-bottom: 1rem">Tourist Places in {{data[0].State}}</h5>
+  <h5 *ngIf="city != '';" style="color:whitesmoke; text-align: center; font-weight: 500; margin-top: 2rem; margin-bottom: 1rem">Tourist Places in {{data[0].City}}, {{data[0].State}}</h5>
+  </header>
   <div *ngIf="data.length > 0; else noData" class="card-container">
     <div *ngFor="let item of data" class="example-card">
       <mat-card appearance="outlined" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; background: transparent; border: none; color:whitesmoke">
         <mat-card-header>
           <img mat-card-avatar class="example-header-image" src="img.jpg" alt="">
           <mat-card-title>{{ item.Name }}</mat-card-title>
-          <mat-card-subtitle style="color:whitesmoke">{{ item.Type }}</mat-card-subtitle>
+          <mat-card-subtitle *ngIf="city == '';" style="color:whitesmoke">{{ item.City }}</mat-card-subtitle>
+          <mat-card-subtitle *ngIf="city != '';" style="color:whitesmoke">{{ item.Type }}</mat-card-subtitle>
         </mat-card-header>
-        <img mat-card-image [src]="item.Image" alt="Image of {{ item.Name }}">
-        <mat-card-content>
-          <p><strong>Establishment Year:</strong> {{ item['Establishment Year'] }}</p>
-          <p><strong>Time Needed to Visit:</strong> {{ item['time needed to visit in hrs'] }} hrs</p>
-          <p><strong>Google Review Rating:</strong> {{ item['Google review rating'] }}</p>
-          <p><strong>Entrance Fee:</strong> INR {{ item['Entrance Fee in INR'] }}</p>
-          <p><strong>Airport within 50km Radius:</strong> {{ item['Airport with 50km Radius'] }}</p>
-          <p><strong>Day Closed:</strong> {{ item['Weekly Off'] }}</p>
-          <p><strong>Importance:</strong> {{ item.Significance }}</p>
-          <p><strong>Best Time to Visit:</strong> {{ item['Best Time to visit'] }}</p>
+        <img mat-card-image id="itemImg" [src]="item.Image" alt="Image of {{ item.Name }}">
+        <mat-card-content style="margin-top: 1rem;">
+          <p><strong style="color: whitesmoke;">Establishment Year:</strong> {{ item['Establishment Year'] }}</p>
+          <p><strong style="color: whitesmoke;">Time Needed to Visit:</strong> {{ item['time needed to visit in hrs'] }} hrs</p>
+          <p><strong style="color: whitesmoke;">Google Review Rating:</strong> {{ item['Google review rating'] }}</p>
+          <p><strong style="color: whitesmoke;">Entrance Fee:</strong> INR {{ item['Entrance Fee in INR'] }}</p>
+          <p><strong style="color: whitesmoke;">Airport within 50km Radius:</strong> {{ item['Airport with 50km Radius'] }}</p>
+          <p><strong style="color: whitesmoke;">Day Closed:</strong> {{ item['Weekly Off'] }}</p>
+          <p><strong style="color: whitesmoke;">Importance:</strong> {{ item.Significance }}</p>
+          <p><strong style="color: whitesmoke;">Best Time to Visit:</strong> {{ item['Best Time to visit'] }}</p>
         </mat-card-content>
       </mat-card>
     </div>

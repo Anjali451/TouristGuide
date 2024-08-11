@@ -6,4 +6,37 @@ mat-tab-group{
   
 }
 
+mat-card{
+  background-color: transparent;
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.row{
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+@media screen and (min-width: 320px) {
+  
+  #icon{
+    width: 2rem;
+  }
+}
+
+@media screen and (min-width: 414px) {
+  
+  #icon{
+    width: 10px;
+    margin-left: -10rem;
+  }
+}
+
+@media screen and (min-width: 428px) {
+  
+  #icon{
+    width: 10px;
+    margin-left: -10rem;
+  }
+}
   
